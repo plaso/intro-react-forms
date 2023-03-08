@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Madrid",
+    "country": "España",
+    "description": "Lorem fistrum me cago en tus muelas jarl qué dise usteer a gramenawer.",
+    "rating": 8,
+    "img": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Barcelona",
+    "country": "España",
+    "description": "Lorem fistrum me cago en tus muelas jarl qué dise usteer a gramenawer.",
+    "rating": 7.5,
+    "img": "https://images.unsplash.com/photo-1583422409516-2895a77efded?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Londres",
+    "country": "Reino Unido",
+    "description": "Lorem fistrum me cago en tus muelas jarl qué dise usteer a gramenawer.",
+    "rating": 5,
+    "img": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 4,
+    "name": "París",
+    "country": "Francia",
+    "description": "Lorem fistrum me cago en tus muelas jarl qué dise usteer a gramenawer.",
+    "rating": 7.5,
+    "img": "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  }
+]
