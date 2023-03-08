@@ -1,6 +1,6 @@
 import PlacesItem from "../PlacesItem/PlacesItem";
 
-const PlacesList = ({ places }) => {
+const PlacesList = ({ places, onDeletePlace }) => {
   const hasPlaces = places && places.length > 0;
 
   return (
@@ -11,6 +11,8 @@ const PlacesList = ({ places }) => {
             <PlacesItem
               // name={place.name}
               // description={place.description}
+              onDelete={onDeletePlace}
+              // onDelete={() => onDeletePlace(place.id)}
               {...place}
             />
           </div>

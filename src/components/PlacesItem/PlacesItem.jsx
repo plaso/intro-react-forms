@@ -1,4 +1,4 @@
-const PlacesItem = ({ name, description, country, img, rating }) => {
+const PlacesItem = ({ id,name, description, country, img, rating, onDelete }) => {
   const handleRatingBackground = () => {
     if (rating >= 8) {
       return 'text-bg-primary';
@@ -16,7 +16,10 @@ const PlacesItem = ({ name, description, country, img, rating }) => {
         <h5 className="card-title">{name}</h5>
         <p className="card-text"><strong>Country:</strong> {country}</p>
         <p className="card-text">{description}</p>
-        <button className="btn btn-danger">Delete</button>
+        {onDelete
+          ? <button onClick={() => onDelete(id)} className="btn btn-danger">Delete</button>
+          : null
+        }
       </div>
     </div>
   );
