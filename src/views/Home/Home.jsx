@@ -1,22 +1,20 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import AddPlaceForm from '../../components/AddPlaceForm/AddPlaceForm';
 import PlacesList from '../../components/PlacesList/PlacesList';
 import placesJSON from '../../data/places.json';
 
 export default class Home extends Component {
   state = {
-    places: placesJSON,
+    places: localStorage.getItem('places') ? JSON.parse(localStorage.getItem('places')) : placesJSON,
     search: '',
-    name: '',
-    country: '',
-    description: '',
-    img: '',
-    rating: 5,
     showAddPlace: true,
   }
 
   onDeletePlace = (placeIdToDelete) => {
-    this.setState({ places: this.state.places.filter(place => place.id !== placeIdToDelete) })
+    const newPlaces = this.state.places.filter(place => place.id !== placeIdToDelete)
+    this.setState({ places: newPlaces })
+    localStorage.setItem('places', JSON.stringify(newPlaces));
   }
 
   onChange = (event) => {
@@ -35,16 +33,17 @@ export default class Home extends Component {
     return places
   }
 
-  onSubmitPlace = (event) => {
-    event.preventDefault();
-    const { places, name, description, img, rating, country } = this.state;
-
+  onSubmitPlace = (place) => {
+    const { places } = this.state;
     const newPlace = {
       id: uuidv4(),
-      name, description, img, rating, country
+      ...place
     }
+    
+    const newPlaces = [newPlace, ...places]
+    localStorage.setItem('places', JSON.stringify(newPlaces))
 
-    this.setState({ places: [newPlace, ...places] })
+    this.setState({ places: newPlaces })
   }
 
   toggleShowAddPlaceForm = () => {
@@ -56,7 +55,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { search, name, country, description, img, rating, showAddPlace } = this.state;
+    const { search, showAddPlace } = this.state;
     return (
       <div className="Home">
         <h1>Lugares a descubrir</h1>
@@ -67,61 +66,7 @@ export default class Home extends Component {
 
         {showAddPlace
           ? (
-            <>
-            <h3>Add a new place</h3>
-            <form onSubmit={this.onSubmitPlace}>
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">Name</label>
-                <input
-                  value={name} onChange={this.onChange} name="name" required
-                  className="form-control" id="name" placeholder="Madrid"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="country" className="form-label">Country</label>
-                <input
-                  required
-                  value={country} onChange={this.onChange} name="country"
-                  className="form-control" id="country" placeholder="España"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="description" className="form-label">Description</label>
-                <textarea
-                  required
-                  value={description}
-                  onChange={this.onChange}
-                  name="description"
-                  className="form-control"
-                  id="exampleFormControlTextarea1" rows="3"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="img" className="form-label">Image</label>
-                <input
-                  required
-                  type="url"
-                  value={img} onChange={this.onChange} name="img"
-                  className="form-control" id="img" placeholder="http://placeholder.com/image.png"
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="rating" className="form-label">Rating</label>
-                <input
-                  required
-                  type="number"
-                  min={0}
-                  max={10}
-                  value={rating} onChange={this.onChange} name="rating"
-                  className="form-control" id="rating"
-                />
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
-            </>
+            <AddPlaceForm onSubmitPlace={this.onSubmitPlace} />
           ) : null
         }
 
