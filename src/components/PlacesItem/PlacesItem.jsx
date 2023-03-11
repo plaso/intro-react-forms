@@ -1,4 +1,4 @@
-const PlacesItem = ({ id,name, description, country, img, rating, onDelete }) => {
+const PlacesItem = ({ id, name, description, country, img, rating, onDelete }) => {
   const handleRatingBackground = () => {
     if (rating >= 8) {
       return 'text-bg-primary';
