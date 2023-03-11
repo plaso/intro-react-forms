@@ -3,6 +3,22 @@ import FormControl from '../misc/FormControl/FormControl';
 import Input from '../misc/Input/Input';
 import { REQUIRED_FIELD, REQUIRED_LENGTH, URL_VALID } from '../../utils/errors'
 import { isRequiredValidator, lengthValidator, urlValidator } from '../../utils/validators'
+import Select from '../misc/Select/Select';
+
+const countries = [
+  {
+    label: 'España',
+    value: 'España'
+  },
+  {
+    label: 'Reino Unido',
+    value: 'Reino Unido'
+  },
+  {
+    label: 'Francia',
+    value: 'Francia'
+  },
+];
 
 const placeSchema = {
   name: (value) => {
@@ -79,7 +95,7 @@ export default class AddPlaceForm extends Component {
 
     if (this.isValidForm()) {
       this.props.onSubmitPlace(this.state.values) // Prop del padre para añadir un nuevo place al listado
-      this.setState({ values: {...INITIAL_VALUES} }) // Resetear el form
+      this.setState({ values: {...INITIAL_VALUES}, errors: {} }) // Resetear el form
     }
   }
 
@@ -120,21 +136,14 @@ export default class AddPlaceForm extends Component {
               error={errors.name}
             />
           </FormControl>
-          {/* <div className="mb-3">
-            <label htmlFor="country" className="form-label">Country</label>
-            <input
-              value={values.country} onChange={this.onChange} name="country"
-              className="form-control" id="country" placeholder="España"
-            />
-          </div> */}
           <FormControl text="Country" htmlFor="country" error={errors.country}>
-            <Input
-              name="country"
+            <Select
+              error={errors.country}
               id="country"
+              name="country"
               value={values.country}
               onChange={this.onChange}
-              placeholder="España"
-              error={errors.country}
+              options={countries}
             />
           </FormControl>
           <FormControl text="Description" htmlFor="description" error={errors.description}>
