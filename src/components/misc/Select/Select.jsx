@@ -1,4 +1,4 @@
-const Select = ({ name, id, onChange, value, options, error }) => {
+const Select = ({ name, id, onChange, value, options, error, disabled = false }) => {
   return (
     <select
       className={`form-select ${error ? 'is-invalid' : ''}`}
@@ -6,6 +6,7 @@ const Select = ({ name, id, onChange, value, options, error }) => {
       onChange={onChange}
       value={value}
       id={id}
+      disabled={disabled}
     >
       <option value="">Pick a value</option>
       {options.map(option=> (

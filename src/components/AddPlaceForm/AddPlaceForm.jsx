@@ -4,21 +4,7 @@ import Input from '../misc/Input/Input';
 import { REQUIRED_FIELD, REQUIRED_LENGTH, URL_VALID } from '../../utils/errors'
 import { isRequiredValidator, lengthValidator, urlValidator } from '../../utils/validators'
 import Select from '../misc/Select/Select';
-
-const countries = [
-  {
-    label: 'España',
-    value: 'España'
-  },
-  {
-    label: 'Reino Unido',
-    value: 'Reino Unido'
-  },
-  {
-    label: 'Francia',
-    value: 'Francia'
-  },
-];
+import { countries } from '../../utils/constants';
 
 const placeSchema = {
   name: (value) => {

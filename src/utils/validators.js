@@ -4,7 +4,7 @@ export const isRequiredValidator = (value) => {
   return !value
 }
 
-export const lengthValidator = (value, num = 50) => {
+export const lengthValidator = (value, num = 5) => {
   return value.length < num;
 }
 

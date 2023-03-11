@@ -1,7 +1,7 @@
 const Input = ({
   type = 'text', value, onChange,
   id, name, placeholder, rows = 3,
-  error, min, max
+  error, min, max, disabled = false,
 }) => {
   const commonProps = {
     value, onChange, id, name, placeholder,
@@ -11,6 +11,7 @@ const Input = ({
     return (
       <textarea
         rows={rows}
+        disabled={disabled}
         {...commonProps}
       />
     )
@@ -20,6 +21,7 @@ const Input = ({
       type={type}
       min={min}
       max={max}
+      disabled={disabled}
       {...commonProps}
     />
   )

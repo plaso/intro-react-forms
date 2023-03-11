@@ -10,7 +10,7 @@ const PlacesItem = ({ id, name, description, country, img, rating, onDelete }) =
 
   return (
     // <div className="card" style="width: 18rem;">
-    <div className="card">
+    <div className="card h-100">
       <img src={img} className="card-img-top" alt="..." />
       <div className={`card-body ${handleRatingBackground()}`}>
         <h5 className="card-title">{name}</h5>
